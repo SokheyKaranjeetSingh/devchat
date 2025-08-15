@@ -92,9 +92,10 @@ The app runs on: http://localhost:8080
 | **DEV**        | Create/manage threads, post messages, vote on messages (requires admin verification) |
 | **ADMIN**      | Verify DEV users, view pending DEV users, all DEV permissions                        |
 | **SUPERADMIN** | Manage all users, verify all roles, full access                                      |
-📌 API Endpoints
-🔑 Authentication
 
+📌 API Endpoints
+
+🔑 Authentication
 POST /api/auth/register — Register user
 
 POST /api/auth/login — Login
