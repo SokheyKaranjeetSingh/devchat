@@ -30,20 +30,22 @@ A **Spring Boot** powered backend for a developer community chat platform, featu
 
 ## 📂 Project Structure
 
+```
 src/
-├── main/
-│ ├── java/com/devchat/backend/
-│ │ ├── controller/ # REST Controllers
-│ │ ├── service/ # Business Logic Layer
-│ │ ├── repository/ # Data Access Layer
-│ │ ├── entity/ # JPA Entities
-│ │ ├── dto/ # Data Transfer Objects
-│ │ ├── security/ # Security Configuration
-│ │ ├── enums/ # Enumerations
-│ │ └── exception/ # Exception Handling
-│ └── resources/
-│ ├── application.properties
-│ └── application-example.properties
+ ├── main/
+ │   ├── java/com/devchat/backend/
+ │   │   ├── controller/      # REST Controllers
+ │   │   ├── service/         # Business Logic Layer
+ │   │   ├── repository/      # Data Access Layer
+ │   │   ├── entity/          # JPA Entities
+ │   │   ├── dto/             # Data Transfer Objects
+ │   │   ├── security/        # Security Configuration
+ │   │   ├── enums/           # Enumerations
+ │   │   └── exception/       # Exception Handling
+ │   └── resources/
+ │       ├── application.properties
+ │       └── application-example.properties
+
 
 ## ⚙️ Getting Started
 
