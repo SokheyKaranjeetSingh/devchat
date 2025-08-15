@@ -70,6 +70,25 @@ Copy the example configuration file:
 
 cp src/main/resources/application-example.properties src/main/resources/application.properties
 
+DevChat Backend
+Setup Instructions
+Copy application-example.properties to application.properties
+Update the database credentials in application.properties:
+spring.datasource.url
+spring.datasource.username
+spring.datasource.password
+Set superadmin credentials:
+superadmin.email
+superadmin.password
+Environment Variables (Alternative)
+You can also use environment variables:
+
+DB_URL
+DB_USERNAME
+DB_PASSWORD
+SUPERADMIN_EMAIL
+SUPERADMIN_PASSWORD
+
 
 Update:
 
