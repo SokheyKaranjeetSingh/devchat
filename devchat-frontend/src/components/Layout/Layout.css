@@ -1,0 +1,49 @@
+.layout {
+  min-height: 100vh;
+  background: var(--app-bg);
+  display: flex;
+}
+
+.main-layout {
+  flex: 1;
+  margin-left: 280px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  margin-top: 64px;
+  background: var(--content-bg);
+  min-height: calc(100vh - 64px);
+  overflow-x: hidden;
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .main-layout {
+    margin-left: 0;
+  }
+
+  .main-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .sidebar-overlay {
+    display: block;
+  }
+}
