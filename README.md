@@ -1,34 +1,52 @@
-# 📌 DevChat Backend
+# 📌 DevChat — Full Stack Developer Chat Platform
 
-A **Spring Boot** powered backend for a developer community chat platform, featuring **role-based access control**, **thread management**, **messaging**, and **voting system**.
+**DevChat** is a complete **developer community platform** built with **Spring Boot** (backend) and **React.js** (frontend), featuring authentication, role-based access control, thread discussions, messaging, voting, and an admin panel.
 
 ---
 
 ## 🚀 Features
 
-- 🔐 **User Authentication & Authorization** using **JWT**
-- 🛡 **Role-based Access Control** (`USER`, `DEV`, `ADMIN`, `SUPERADMIN`)
-- 📝 **Thread Management** — create, read, update, and delete threads
-- 💬 **Messaging System** — reply to threads with messages
-- 👍 **Voting System** — upvote/downvote messages
-- 🛠 **Admin Panel** — verify and manage users
-- 🔍 **Search Functionality** — search threads by keywords
-- 🗄 **MySQL Database Integration**
+### 🔹 Common
+- 🔐 **JWT Authentication**
+- 🛡 **Role-based Access Control** — `USER`, `DEV`, `ADMIN`, `SUPERADMIN`
+- 📝 Thread discussions with search
+- 💬 Messaging system with replies
+- 👍 Voting system on messages
+- 🛠 Admin panel for user management
+- 📱 Responsive design
+
+### 🔹 Backend (Spring Boot)
+- Secure token-based authentication
+- Role & permission enforcement
+- MySQL database with JPA & Hibernate
+- Admin verification system
+- Global exception handling & logging
+
+### 🔹 Frontend (React.js)
+- Login/Register UI with JWT
+- Role-based protected routes
+- Thread creation, viewing, and searching
+- Message posting for verified users
+- Admin dashboard for verifying users
+- Real-time updates & toast notifications
 
 ---
 
 ## 🏗 Tech Stack
 
-- **Java 17+**
-- **Spring Boot 3.x**
-- **Spring Security** with JWT Authentication
-- **Spring Data JPA** (Hibernate)
-- **MySQL 8+**
-- **Maven** for dependency management
+| Layer      | Technologies |
+|------------|--------------|
+| **Frontend** | React 18.2, React Router 6.11, React Hook Form 7.45, Axios, React Toastify, CSS3 |
+| **Backend** | Java 17+, Spring Boot 3.x, Spring Security (JWT), Spring Data JPA, Hibernate, MySQL 8+, Maven |
+| **Database** | MySQL |
+| **Build Tools** | Maven (backend), npm/yarn (frontend) |
 
 ---
 
 ## 📂 Project Structure
+
+<details>
+<summary>📦 Backend (Spring Boot)</summary>
 
 ```
 src/
@@ -46,84 +64,76 @@ src/
  │       ├── application.properties
  │       └── application-example.properties
 
+🎨 Frontend (React.js
+src/
+ ├── components/       # UI Components
+ ├── pages/            # Page Views (Login, Dashboard, Threads, etc.)
+ ├── hooks/            # Custom Hooks
+ ├── services/         # API Calls (Axios)
+ ├── App.js            # Main App Component
+ ├── index.js          # Entry Point
+ └── styles/           # CSS Styling
+⚙️ Getting Started
+✅ Prerequisites
 
-## ⚙️ Getting Started
+Java 17+ (Backend)
+MySQL 8+ (Backend)
+Maven 3.6+ (Backend)
+Node.js 16+ & npm/yarn (Frontend)
 
-### ✅ Prerequisites
-- **Java 17** or higher
-- **MySQL 8** or higher
-- **Maven 3.6+**
-
-### 📥 Installation
-
-1️⃣ **Clone the repository**
-```bash
+📥 Backend Setup
+1️⃣ Clone the repository
 git clone <repository-url>
 cd devchat-backend
-2️⃣ Create MySQL database
 
+
+2️⃣ Create MySQL Database
 CREATE DATABASE devchat;
 
 
-3️⃣ Configure database connection
-Copy the example configuration file:
-
+3️⃣ Configure Database
 cp src/main/resources/application-example.properties src/main/resources/application.properties
-
-DevChat Backend
-Setup Instructions
-Copy application-example.properties to application.properties
-Update the database credentials in application.properties:
-spring.datasource.url
-spring.datasource.username
-spring.datasource.password
-Set superadmin credentials:
-superadmin.email
-superadmin.password
-Environment Variables (Alternative)
-You can also use environment variables:
-
-DB_URL
-DB_USERNAME
-DB_PASSWORD
-SUPERADMIN_EMAIL
-SUPERADMIN_PASSWORD
-
-
 Update:
-
 spring.datasource.url=jdbc:mysql://localhost:3306/devchat
 spring.datasource.username=your_db_username
 spring.datasource.password=your_db_password
-
 superadmin.email=admin@devchat.com
 superadmin.password=your_secure_password
 
 
-4️⃣ Build and run the application
-
+4️⃣ Run Backend
 mvn clean install
 mvn spring-boot:run
 
 
-The app runs on: http://localhost:8080
+Backend runs at: http://localhost:8080
+
+🎨 Frontend Setup
+1️⃣ Navigate to frontend
+cd devchat-frontend
+2️⃣ Install dependencies
+npm install
+3️⃣ Run frontend
+npm start
+Frontend runs at: http://localhost:3000
+
 | Role           | Permissions                                                                          |
 | -------------- | ------------------------------------------------------------------------------------ |
-| **USER**       | Basic registration (auto-verified), limited platform access                          |
-| **DEV**        | Create/manage threads, post messages, vote on messages (requires admin verification) |
-| **ADMIN**      | Verify DEV users, view pending DEV users, all DEV permissions                        |
-| **SUPERADMIN** | Manage all users, verify all roles, full access                                      |
+| **USER**       | Basic registration, view/search threads, read-only messages                          |
+| **DEV**        | Post messages, vote on messages, create/manage threads (requires admin verification) |
+| **ADMIN**      | Verify DEV users, view pending users, all DEV permissions                            |
+| **SUPERADMIN** | Manage all users, verify all roles, full system access                               |
 
 📌 API Endpoints
-
 🔑 Authentication
-POST /api/auth/register — Register user
+
+POST /api/auth/register — Register
 
 POST /api/auth/login — Login
 
 🛠 Admin
 
-GET /api/admin/pending-users — Get pending users (ADMIN/SUPERADMIN)
+GET /api/admin/pending-users — View pending users
 
 POST /api/admin/verify-user/{userId} — Verify user
 
@@ -145,7 +155,7 @@ GET /api/threads/search?keyword={keyword} — Search threads
 
 💬 Messages
 
-GET /api/messages/thread/{threadId} — Get messages by thread
+GET /api/messages/thread/{threadId} — Get messages
 
 POST /api/messages — Post message
 
@@ -161,28 +171,26 @@ GET /api/votes/{messageId} — Get vote counts
 
 🔐 Security Features
 
-JWT Authentication for secure token-based login
+JWT-based authentication
 
-Role-based Authorization using Spring Security
+Role-based access with Spring Security
 
-BCrypt Password Encryption
+BCrypt password encryption
 
-CORS Configuration for cross-origin access
+CORS configuration
 
-Method-level Security with @PreAuthorize
+Method-level security (@PreAuthorize)
 
 🛡 Error Handling
-
-Custom global exception handling for:
 
 UserNotFoundException
 
 ThreadNotFoundException
 
-Generic runtime exceptions
+Generic exception handling
 
 📜 Logging
 
-DEBUG logging for Spring Web, Spring Security, and Hibernate SQL
+DEBUG level logging for Spring Web, Spring Security, and Hibernate SQL
 
-Application-specific logs for easy debugging
+Custom application logs for debugging
